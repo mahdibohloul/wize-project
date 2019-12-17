@@ -1,0 +1,32 @@
+<h1> Task Board </h1>
+<br>
+<br>
+{% if user != null %}
+            <form action="{% url 'task' %}" method="post">
+                <select name="office" class="form-control" id="type" required>
+                {% for instance in office %}
+                        <option name="office" value="{{ instance }}" >{{ instance }}</option>
+                {% endfor %}
+                </select>
+                    <br><br>
+                <select name="task_force" class="form-control" id="type" required >
+                    {% for user in task_force %}
+                        <option name="task_force" value="{{ user }}">{{ user }}</option>
+                    {% endfor %}
+                </select>
+                    <br><br>
+                <div>
+                    Task title: <input type="text" name="task_object" maxlength="65" required><br><br>
+                    Task description: <input type="text" name="task_description" maxlength="255" required>
+                </div>
+                    <br>
+                <div>
+                    Deadline Date:
+                     <input type="date" name="dateField">
+                        {{ DateTime.my_date_field }}
+                </div>
+                <input type="submit" value="submit" class="button">
+            </form>
+{% else %}
+    You cant add task please contact to your admin
+{% endif %}

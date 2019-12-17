@@ -1,0 +1,59 @@
+<h1>Dashboard</h1>
+<h2>
+    {{ username }} سلام
+</h2>
+
+
+{% if nameofuser != null %}
+    <p>You can apply for job</p>
+    <tbody>
+        <button onclick="location.href = 'http://127.0.0.1:8000/notifications/notifications';" id="myButton" class="float-left submit-button" >apply for job</button>
+
+{#                <form action="{% url 'apply' %}" method="POST">#}
+{##}
+{#                    {% for office in organ %}#}
+{#                            {% csrf_token %}#}
+{#                            <div class="form-group">#}
+{#                                <input type="radio" name="organization" value={{office}}>{{office}}<br>#}
+{#                            </div>#}
+{#                    {% endfor %}#}
+{#                    <input type="submit" value="ثبت نام" class="btn btn-secondary btn-block">#}
+{#                </form>#}
+    </tbody>
+{% elif task_force != null %}
+
+    <form action="{% url 'is_done' %}" method="post">
+        {% for task in task_date %}
+            <script>
+                function submit() {
+                    if(task.is_done == True){
+                        alert("This task was done")
+                        return false;}
+                    else{
+                        return true;
+                    }
+                }
+            </script>
+            title: {{ task.task_title }} <br>
+            description: {{ task.task_description }}<br>
+            dead line: {{ task.dead_line }}<br>
+            task force: {{ task.task_force }}<br>   <input onsubmit="return submit();" type="submit" name="is_done" value="task is done" >
+        {% endfor %}
+    </form>
+{% elif staff_user != null %}
+
+    <form action="{% url 'apply'%}" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+    {% for notifications,userapplicant,officeaplly in my_list%}
+       <input type="submit" name="accept_apply" value="{{ notifications}} of {{ userapplicant }} to {{ officeaplly }}">
+    {% endfor %}
+     </div>
+    </form>
+
+{% endif %}
+<br><br><br>
+<button onclick="location.href = 'http://127.0.0.1:8000/accounts/login/';" id="myButton" class="float-left submit-button" >login</button>
+<button onclick="location.href = 'http://127.0.0.1:8000/accounts/logout/';" id="myButton" class="float-left submit-button" >logout</button>
+<button onclick="location.href = 'http://127.0.0.1:8000/accounts/signup/';" id="myButton" class="float-left submit-button" >signup</button>
+<button onclick="location.href = 'http://127.0.0.1:8000/admin/';" id="myButton" class="float-left submit-button" >admin</button>

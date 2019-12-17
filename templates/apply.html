@@ -1,0 +1,19 @@
+<header>Apply for Job</header>
+<br><br><br>
+<form action="{% url 'notifications' %}" method="post">
+<div  class="form-group">
+    {% csrf_token %}
+{% for office in office %}
+    <input type="radio" name="office" value="{{ office }}">{{ office }}
+{% endfor %}
+</div>
+<br><br><br>
+
+ <select name="object_messages" class="form-control" id="type">
+        {% for key,value in object_messages.items %}
+                <option name="object_messages" value="{{ key }}">{{ value }}</option>
+        {% endfor %}
+</select>
+<br><br><br>
+<input type="submit" value="apply" class="btn btn-secondary btn-block">
+</form>
