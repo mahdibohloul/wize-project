@@ -10,14 +10,14 @@ A site for wize company
    * Postgres 3.0.0
    * HTML5
    
-  This site is based on Python and Django and the database I used is postgres that I choosed it for this reasons:
-  postgres is faster than MYSQL in calling field and rows 
+  This site is based on Python and Django and the database that we used on it is Postgres that we chose because of this reasons:
   
+  postgres is faster than MYSQL in calling field and rows, Also in data analysis topic it is faster and more effective because of its structure and facilities and it's worth mentioning that Postgre also supports many NoSQL features as well.
   
  
  
 # Lunch
-  After clone the project into your drive to work with it follow the following instructions:
+  After clone the project into your drive for work with it, follow the following instructions:
   (The requirments.txt is in the project folder)
   
   $ cd wize_project
@@ -33,6 +33,8 @@ A site for wize company
   $ python manage.py makemigrations
   
   $ python manage.py migrate
+  
+  $ python manage.py runserver
   
 # The Content Of The Project
   In this project we have 4 apps:
